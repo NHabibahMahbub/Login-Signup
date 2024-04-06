@@ -17,6 +17,8 @@ def signup(request):
         email = request.POST.get('email')
         password1 = request.POST.get('password1')
         password2 = request.POST.get('password2')
+        if not (username and email and password1 and password2):
+            return HttpResponse("Please fill in all the fields")
         if password1 != password2:
             return HttpResponse("Your password didn't match!")
         else:
